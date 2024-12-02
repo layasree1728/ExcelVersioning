@@ -1,0 +1,43 @@
+server:
+  port: 80
+spring:
+  application:
+    name: Top-Talent-Management
+  security:
+    oauth2:
+      client:
+        registration:
+          epam:
+            client-id: oauth-client.epm-ianai.step-portal.stage
+            client-secret: rfmBFwdEVps7XcF62XxJBPa4VXb8uOWH
+            provider: epam
+            scope:
+              - openid
+              - basic
+              - email
+              - profile
+            authorization-grant-type: authorization_code
+            response-type: code
+            redirect-uri: http://step.local/oauth2/callback
+        provider:
+          epam:
+            issuer-uri: https://access-staging.epam.com/auth/realms/plusx
+  datasource:
+    url: jdbc:postgresql://localhost:5432/extractdata
+    username: postgres
+    password: 998877
+  jpa:
+    hibernate:
+      ddl-auto: update
+  logging:
+    level:
+      org:
+        springframework:
+          web: DEBUG
+        hibernate:
+          SQL: DEBUG
+  springdoc:
+    api-docs:
+      enabled: true
+    swagger-ui:
+      enabled: true
